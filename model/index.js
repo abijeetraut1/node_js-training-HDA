@@ -1,6 +1,7 @@
 const DBconfig = require("../dbConfig/dbConfig");
 const Sequelize = require("sequelize");
 const student = require("./student");
+const studentPublicDetails = require("./studentPublicDetails");
 
 const sequelize = new Sequelize(DBconfig.db, DBconfig.USER, DBconfig.PASS, {
     host: DBconfig.HOST,
@@ -28,5 +29,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.student = student(sequelize, Sequelize.DataTypes);
+db.sudentDetails = studentPublicDetails(sequelize, Sequelize.DataTypes);
 
 module.exports = db;

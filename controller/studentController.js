@@ -1,5 +1,5 @@
 const db = require("../model/index");
-const blogs = db.student;
+const Student = db.student;
 
 exports.createBlog = async (req, res) => {
     let data = {
@@ -7,18 +7,18 @@ exports.createBlog = async (req, res) => {
         desc: req.body.desc,
     };
 
-    let createdBlogs = await students.create({
+    let createdStudent = await students.create({
         name: req.body.title,
         desc: req.body.desc
     });
 
     res.status(200).json({
-        data: createdBlogs,
+        data: createdStudent,
         message: "Created Successfully"
     })
 };
 
-exports.getBlogs = async (req, res) => {
+exports.getStudent = async (req, res) => {
     const blog = await students.findAll()
 
     res.status(200).json({
@@ -27,7 +27,7 @@ exports.getBlogs = async (req, res) => {
     })
 }
 
-exports.DeleteBlogs = async (req, res) => {
+exports.DeleteStudent = async (req, res) => {
     const blog = await students.destroy({
         where: {
             id: req.params.id
@@ -37,11 +37,11 @@ exports.DeleteBlogs = async (req, res) => {
 
     res.status(200).json({
         status: "data deleted",
-        message: blogs
+        message: Student
     })
 }
 
-exports.getBlogsById = async (req, res) => {
+exports.getStudentById = async (req, res) => {
     const blog = await students.findByPK(req.params.id)
 
     res.status(200).json({
